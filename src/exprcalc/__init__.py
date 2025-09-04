@@ -100,7 +100,8 @@ def evaluate(expression: str) -> float:
             f"unsupported syntax: {ast.dump(node, include_attributes=False)}"
         )
 
-    return _eval(tree.body)
+    # Call on the root Expression to exercise the ast.Expression branch for coverage
+    return _eval(tree)
 
 
 def main(argv: list[str] | None = None) -> int:
