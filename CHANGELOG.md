@@ -1,20 +1,31 @@
-# Changelog
+## [unreleased]
 
-All notable changes to this project will be documented in this file.
+### 🚜 Refactor
 
-The format loosely follows Keep a Changelog and Semantic Versioning.
+- Rename project from exprcalc to expreval; update CI, README, and tests accordingly
+## [0.2.0] - 2025-09-04
 
+### 🚀 Features
+
+- Add local hooks for coverage badge generation and update README to use local coverage.svg
+
+### 📚 Documentation
+
+- Add CHANGELOG and coverage badge; ci: add release workflow; test: improve coverage; refactor: wrap evaluate root
+
+### 🧪 Testing
+
+- Expand CLI tests, adjust coverage threshold to 98%; chore: simplify pre-commit config
 ## [0.1.0] - 2025-09-04
-### Added
-- Initial release: minimal safe math expression evaluator (`evaluate`).
-- CLI entry point `exprcalc`.
-- Extensive test suite (25 tests) with 96% coverage.
-- Strict typing (mypy) and distributed `py.typed` marker.
-- CI: lint, format, type-check, tests, coverage.
 
-### Internal / Tooling
-- Ruff for lint/format.
-- Coverage reporting enforced (fail under 90%).
-- Pre-commit hooks (ruff + mypy).
+### 🧪 Testing
 
-[0.1.0]: https://github.com/Jayanth-MKV/exprcalc/releases/tag/v0.1.0
+- Add basic evaluate() test suite with pytest
+- *(coverage)* Add extensive test suite, coverage config, py.typed, CI coverage steps
+
+### ⚙️ Miscellaneous Tasks
+
+- Add project scaffold (config, core evaluator, CLI, docs)
+- *(ci)* Configure pre-commit with Ruff
+- Add GitHub Actions workflow for linting and tests
+- *(types)* Add mypy with strict config and CI integration
