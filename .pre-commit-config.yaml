@@ -12,3 +12,22 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: []
+
+   # Local hooks for coverage badge generation
+  - repo: local
+    hooks:
+      - id: coverage-badge
+        name: Generate coverage badge
+        entry: bash -c 'uv run coverage erase && uv run coverage run -m pytest -q && uv run coverage combine && uv run coverage report && uv run genbadge coverage  -i coverage.xml -o coverage.svg'
+        language: system
+        pass_filenames: false
+        stages: [pre-push]  # Better suited for pre-push than pre-commit
+
+  - repo: local
+    hooks:
+      - id: git-changelog
+        name: Update CHANGELOG.md
+        entry: uv run git-changelog -o CHANGELOG.md
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
