@@ -20,7 +20,9 @@ import sys
 from collections.abc import Callable
 from typing import Any
 
-__all__ = ["evaluate", "main"]
+__all__ = ["evaluate", "main", "__version__"]
+
+__version__ = "0.1.0"
 
 _ALLOWED_FUNCS: dict[str, Any] = {
     name: getattr(math, name) for name in dir(math) if not name.startswith("_")
