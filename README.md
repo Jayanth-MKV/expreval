@@ -6,7 +6,7 @@
 
 <br/>
 <!-- Coverage badge placeholder; replace with Codecov after enabling -->
-<img alt="coverage" src="https://img.shields.io/badge/coverage-96%25-brightgreen" />
+<img alt="coverage" src="assets/coverage.svg" />
 <br/>
 <a href="CHANGELOG.md">Changelog</a>
 
