@@ -1,33 +1,13 @@
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.11 # Sync with pyproject dev dependency
+    rev: v0.12.11
     hooks:
-      # Run the linter with auto-fix
       - id: ruff-check
         args: [--fix]
-      # Run the formatter
       - id: ruff-format
+
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.17.1
     hooks:
       - id: mypy
         additional_dependencies: []
-
-   # Local hooks for coverage badge generation
-  - repo: local
-    hooks:
-      - id: coverage-badge
-        name: Generate coverage badge
-        entry: bash -c 'uv run coverage erase && uv run coverage run -m pytest -q && uv run coverage combine && uv run coverage report && uv run genbadge coverage  -i coverage.xml -o coverage.svg'
-        language: system
-        pass_filenames: false
-        stages: [pre-push]  # Better suited for pre-push than pre-commit
-
-  - repo: local
-    hooks:
-      - id: git-cliff
-        name: Update CHANGELOG.md
-        entry: uv run git-cliff -o
-        language: system
-        pass_filenames: false
-        stages: [pre-push]

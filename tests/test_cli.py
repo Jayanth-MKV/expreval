@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from exprcalc import main
+from expreval import main
 
 
 def test_cli_success(capsys: Any) -> None:

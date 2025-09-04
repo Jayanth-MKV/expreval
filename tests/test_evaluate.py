@@ -2,7 +2,7 @@ import math
 
 import pytest
 
-from exprcalc import evaluate
+from expreval import evaluate
 
 
 @pytest.mark.parametrize(
@@ -84,7 +84,7 @@ def test_expression_wrapper_branch() -> None:
 
 def test_cli_error_message_format(monkeypatch: object) -> None:
     # Induce NameError to ensure 'error:' prefix path is covered
-    from exprcalc import main as cli_main
+    from expreval import main as cli_main
 
     class DummyArgs(list):
         pass
@@ -97,8 +97,8 @@ def test_cli_error_message_format(monkeypatch: object) -> None:
 def test_unsupported_unary_operator(monkeypatch: object) -> None:
     # Monkeypatch _UNARY_OPS to remove support and trigger 'unsupported unary operator'
 
-    from exprcalc import _UNARY_OPS as UNOPS
-    from exprcalc import evaluate as ev
+    from expreval import _UNARY_OPS as UNOPS
+    from expreval import evaluate as ev
 
     original = UNOPS.copy()
     try:
