@@ -78,6 +78,23 @@ Original itch: certain very large numeric expressions (or results) caused `numex
 
 So `expreval` exists to reliably handle those "big result" cases where bringing in `numexpr` (and hitting its internal limits) was overkill. If you only need quick scalar math, this keeps it boring and dependable.
 
+## Contributor Guide
+
+```
+uv venv
+uv sync
+
+# make changes and then run these 
+
+# to create coverage logo and changelogs
+.\scripts\update.sh
+
+# (Optional)to bump version for release
+uv run scripts\bump_version.py <X.Y.Z>
+
+```
+
+
 ## License
 
 MIT. See `LICENSE`.
