@@ -37,13 +37,10 @@ files = ["src", "tests"]
 
 
 [tool.ruff]
-# Set line length to match Black's default
 line-length = 88
-
 target-version = "py313"
 
 [tool.ruff.lint]
-# Enable more rules beyond the default E and F
 extend-select = [
     "I",   # isort (import sorting)
     "B",   # bugbear (Python gotchas) 
@@ -51,16 +48,12 @@ extend-select = [
     "C4",  # flake8-comprehensions
     "SIM", # flake8-simplify
 ]
-
-# Auto-fix these rules when possible
 fixable = ["ALL"]
 
 [tool.ruff.format]
-# Use double quotes for strings
 quote-style = "double"
-
-# Prefer single quotes for docstrings
 docstring-code-format = true
+
 
 [tool.coverage.run]
 branch = true
