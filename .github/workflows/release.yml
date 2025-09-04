@@ -8,8 +8,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Need write permission on contents to create a GitHub Release
     permissions:
-      contents: read
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,8 +32,8 @@ jobs:
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-            password: ${{ secrets.PYPI_API_TOKEN }}
-            verbose: true
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          verbose: true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2.3.2
