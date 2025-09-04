@@ -4,10 +4,13 @@ on:
   push:
     branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,20 +27,32 @@ jobs:
       - name: Sync dependencies (dev)
         run: uv sync --group dev
 
-      - name: Lint (Ruff)
+      - name: Ruff lint
         run: uv run ruff check --output-format=github .
 
-      - name: Format check (Ruff)
+      - name: Ruff format check
         run: uv run ruff format --check .
 
       - name: Type check (mypy)
         run: uv run mypy src
 
-      - name: Run tests
-        run: uv run pytest -q
+      - name: Run tests with coverage
+        run: |
+          uv run coverage erase
+          uv run coverage run -m pytest -q
+          uv run coverage combine || true
+          uv run coverage xml -i
+          uv run coverage report
 
-      - name: Coverage (run)
-        run: uv run coverage run -m pytest -q
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage.xml
+          fail_ci_if_error: false
+          verbose: true
 
-      - name: Coverage report (fail under threshold)
-        run: uv run coverage report
+      - name: Upload coverage XML artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: coverage.xml

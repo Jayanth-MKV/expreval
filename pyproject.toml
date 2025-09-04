@@ -1,5 +1,5 @@
 [project]
-name = "exprcalc"
+name = "expreval"
 version = "0.1.0"
 description = "Minimal, robust Python library for any math expressions"
 readme = "README.md"
@@ -8,7 +8,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-exprcalc = "exprcalc:main"
+expreval = "expreval:main"
 
 [build-system]
 requires = ["uv_build>=0.8.13,<0.9.0"]
@@ -21,8 +21,6 @@ dev = [
     "ruff>=0.12.11",
     "mypy>=1.17.1",
     "coverage[toml]>=7.10.6",
-    "genbadge[coverage]>=1.1.2",
-    "git-cliff>=2.10.0",
 ]
 
 [tool.mypy]
@@ -59,7 +57,7 @@ docstring-code-format = true
 
 [tool.coverage.run]
 branch = true
-source = ["src/exprcalc"]
+source = ["src/expreval"]
 parallel = true
 
 [tool.coverage.report]

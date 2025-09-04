@@ -1,4 +1,4 @@
-"""exprcalc: Minimal, robust Python library for any math expressions
+"""expreval: Minimal, robust Python library for any math expressions
 
 Current focus: a minimal, dependency‑free function `evaluate()` that can compute
 pure math expressions using Python's `math` module and a small safe AST walk.
@@ -108,13 +108,13 @@ def main(argv: list[str] | None = None) -> int:
     """Minimal CLI.
 
     Usage:
-        exprcalc "sin(pi/2) + 1"  # prints result
+        expreval "sin(pi/2) + 1"  # prints result
     """
 
     if argv is None:
         argv = sys.argv[1:]
     if not argv or argv[0] in {"-h", "--help"}:
-        print("Usage: exprcalc <expression>")
+        print("Usage: expreval <expression>")
         return 0
     expr = " ".join(argv)
     try:

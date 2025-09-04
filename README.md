@@ -1,12 +1,13 @@
 <div align="center">
-<img src="assets/logo.png" alt="exprcalc logo" width="100">
+<img src="assets/logo.png" alt="expreval logo" width="100">
 
-
-<i>Exprcalc, A Minimal, robust Python library for any math expressions</i>
+<i>Expreval, A Minimal, robust Python library for any math expressions</i>
 
 <br/>
-<!-- Coverage badge placeholder; replace with Codecov after enabling -->
-<img alt="coverage" src="assets/coverage.svg" />
+<!-- Coverage badge (dynamic via Codecov). Replace 'YOUR_ORG' if repo under org -->
+<a href="https://codecov.io/gh/Jayanth-MKV/expreval">
+	<img src="https://codecov.io/gh/Jayanth-MKV/expreval/branch/main/graph/badge.svg" alt="Coverage status" />
+</a>
 <br/>
 <a href="CHANGELOG.md">Changelog</a>
 
@@ -17,20 +18,20 @@ Minimal. Single function. No dependencies. You give a string with a numeric expr
 ## Install
 
 ```bash
-pip install exprcalc
+pip install expreval
 ```
 
 ## Quick use
 
 ```python
-from exprcalc import evaluate
+from expreval import evaluate
 evaluate("sin(pi/2) + log(e)")  # 2.0
 ```
 
 CLI:
 
 ```bash
-exprcalc "sin(pi/4)**2"
+expreval "sin(pi/4)**2"
 ```
 
 ## What works now
@@ -72,7 +73,7 @@ Original itch: certain very large numeric expressions (or results) caused `numex
 - Always returns a plain Python float for valid math
 - Is easy to audit (a short AST walk) and extend later if truly needed
 
-So `exprcalc` exists to reliably handle those "big result" cases where bringing in `numexpr` (and hitting its internal limits) was overkill. If you only need quick scalar math, this keeps it boring and dependable.
+So `expreval` exists to reliably handle those "big result" cases where bringing in `numexpr` (and hitting its internal limits) was overkill. If you only need quick scalar math, this keeps it boring and dependable.
 
 ## License
 
