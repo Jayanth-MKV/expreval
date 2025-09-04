@@ -1,6 +1,6 @@
 [project]
 name = "expreval"
-version = "0.1.0"
+version = "1.1.0"
 description = "Minimal, robust Python library for any math expressions"
 readme = "README.md"
 authors = [{ name = "Jayanth MKV", email = "mkvjayanth1@gmail.com" }]
