@@ -35,3 +35,9 @@ jobs:
 
       - name: Run tests
         run: uv run pytest -q
+
+      - name: Coverage (run)
+        run: uv run coverage run -m pytest -q
+
+      - name: Coverage report (fail under threshold)
+        run: uv run coverage report
