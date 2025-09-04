@@ -1,0 +1,47 @@
+[project]
+name = "exprcalc"
+version = "0.1.0"
+description = "Minimal, robust Python library for any math expressions"
+readme = "README.md"
+authors = [{ name = "Jayanth MKV", email = "mkvjayanth1@gmail.com" }]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+exprcalc = "exprcalc:main"
+
+[build-system]
+requires = ["uv_build>=0.8.13,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "ruff>=0.12.11",
+]
+
+[tool.ruff]
+# Set line length to match Black's default
+line-length = 88
+
+target-version = "py313"
+
+[tool.ruff.lint]
+# Enable more rules beyond the default E and F
+extend-select = [
+    "I",   # isort (import sorting)
+    "B",   # bugbear (Python gotchas) 
+    "UP",  # pyupgrade (Python version upgrades)
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+
+# Auto-fix these rules when possible
+fixable = ["ALL"]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Prefer single quotes for docstrings
+docstring-code-format = true
