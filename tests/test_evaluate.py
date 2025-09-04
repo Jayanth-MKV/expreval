@@ -92,3 +92,24 @@ def test_cli_error_message_format(monkeypatch: object) -> None:
     # Using direct call
     code = cli_main(["doesnotexist(1)"])
     assert code == 2
+
+
+def test_unsupported_unary_operator(monkeypatch: object) -> None:
+    # Monkeypatch _UNARY_OPS to remove support and trigger 'unsupported unary operator'
+
+    from exprcalc import _UNARY_OPS as UNOPS
+    from exprcalc import evaluate as ev
+
+    original = UNOPS.copy()
+    try:
+        UNOPS.clear()  # no unary ops allowed now
+        with pytest.raises(TypeError):
+            ev("-1")
+    finally:
+        UNOPS.update(original)
+
+
+def test_fallthrough_unsupported_syntax() -> None:
+    # Use a comprehension to ensure it reaches final raise
+    with pytest.raises(TypeError):
+        evaluate("(x for x in (1,2,3))")

@@ -25,9 +25,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: git-changelog
+      - id: git-cliff
         name: Update CHANGELOG.md
-        entry: uv run git-changelog -o CHANGELOG.md
+        entry: uv run git-cliff -o
         language: system
         pass_filenames: false
         stages: [pre-push]
