@@ -21,6 +21,8 @@ dev = [
     "ruff>=0.12.11",
     "mypy>=1.17.1",
     "coverage[toml]>=7.10.6",
+    "genbadge[coverage]>=1.1.2",
+    "git-cliff>=2.10.0",
 ]
 
 [tool.mypy]
@@ -61,6 +63,6 @@ source = ["src/exprcalc"]
 parallel = true
 
 [tool.coverage.report]
-fail_under = 90
+fail_under = 98
 show_missing = true
 skip_empty = true

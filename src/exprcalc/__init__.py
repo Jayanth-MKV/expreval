@@ -122,6 +122,7 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:  # keep simple for now
         print(f"error: {exc}", file=sys.stderr)
         return 2
+    # Return via print to stdout; separated for easier testing
     print(val)
     return 0
 
