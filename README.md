@@ -1,13 +1,16 @@
 <div align="center">
-<img src="assets/logo.png" alt="expreval logo" width="100">
+<img src="https://raw.githubusercontent.com/Jayanth-MKV/expreval/refs/heads/main/assets/logo.png" alt="expreval logo" width="100">
 
 <i>Expreval, A Minimal, robust Python library for any math expressions</i>
 
 <br/>
 <!-- Coverage badge (dynamic via Codecov). Replace 'YOUR_ORG' if repo under org -->
-<a href="https://codecov.io/gh/Jayanth-MKV/expreval">
+<!-- <a href="https://codecov.io/gh/Jayanth-MKV/expreval">
 	<img src="https://codecov.io/gh/Jayanth-MKV/expreval/branch/main/graph/badge.svg" alt="Coverage status" />
-</a>
+</a> -->
+
+<img alt="coverage" src="https://raw.githubusercontent.com/Jayanth-MKV/expreval/refs/heads/main/assets/coverage.svg" />
+
 <br/>
 <a href="CHANGELOG.md">Changelog</a>
 
