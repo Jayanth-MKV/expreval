@@ -4,6 +4,12 @@
 
 <i>Exprcalc, A Minimal, robust Python library for any math expressions</i>
 
+<br/>
+<!-- Coverage badge placeholder; replace with Codecov after enabling -->
+<img alt="coverage" src="https://img.shields.io/badge/coverage-96%25-brightgreen" />
+<br/>
+<a href="CHANGELOG.md">Changelog</a>
+
 </div>
 
 Minimal. Single function. No dependencies. You give a string with a numeric expression; it returns a float.

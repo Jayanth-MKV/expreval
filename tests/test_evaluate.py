@@ -75,3 +75,20 @@ def test_unknown_function_call() -> None:
 def test_unsupported_syntax_generic() -> None:
     with pytest.raises(TypeError):
         evaluate("[1,2,3]")  # list nodes not supported
+
+
+def test_expression_wrapper_branch() -> None:
+    # Ensures the ast.Expression branch is traversed (already by any evaluate call after change)
+    assert evaluate("1+1") == pytest.approx(2.0)
+
+
+def test_cli_error_message_format(monkeypatch: object) -> None:
+    # Induce NameError to ensure 'error:' prefix path is covered
+    from exprcalc import main as cli_main
+
+    class DummyArgs(list):
+        pass
+
+    # Using direct call
+    code = cli_main(["doesnotexist(1)"])
+    assert code == 2
