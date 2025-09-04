@@ -17,6 +17,7 @@ import ast
 import math
 import operator
 import sys
+from collections.abc import Callable
 from typing import Any
 
 __all__ = ["evaluate", "main"]
@@ -26,7 +27,7 @@ _ALLOWED_FUNCS: dict[str, Any] = {
 }
 _ALLOWED_NAMES: dict[str, Any] = {"pi": math.pi, "e": math.e, **_ALLOWED_FUNCS}
 
-_BIN_OPS = {
+_BIN_OPS: dict[type, Callable[[float, float], float]] = {
     ast.Add: operator.add,
     ast.Sub: operator.sub,
     ast.Mult: operator.mul,
@@ -34,7 +35,10 @@ _BIN_OPS = {
     ast.Pow: operator.pow,
     ast.Mod: operator.mod,
 }
-_UNARY_OPS = {ast.USub: operator.neg, ast.UAdd: operator.pos}
+_UNARY_OPS: dict[type, Callable[[float], float]] = {
+    ast.USub: operator.neg,
+    ast.UAdd: operator.pos,
+}
 
 
 def evaluate(expression: str) -> float:
@@ -63,15 +67,19 @@ def evaluate(expression: str) -> float:
                 return float(node.value)
             raise TypeError(f"unsupported literal: {node.value!r}")
         if isinstance(node, ast.BinOp):
-            op_type = type(node.op)
-            if op_type not in _BIN_OPS:
+            op_obj = node.op
+            op_type: type[ast.operator] = type(op_obj)
+            func = _BIN_OPS.get(op_type)
+            if func is None:
                 raise TypeError(f"unsupported operator: {op_type.__name__}")
-            return _BIN_OPS[op_type](_eval(node.left), _eval(node.right))
+            return func(_eval(node.left), _eval(node.right))
         if isinstance(node, ast.UnaryOp):
-            op_type = type(node.op)
-            if op_type not in _UNARY_OPS:
-                raise TypeError(f"unsupported unary operator: {op_type.__name__}")
-            return _UNARY_OPS[op_type](_eval(node.operand))
+            uop_obj = node.op  # ast.unaryop instance
+            uop_type = type(uop_obj)
+            ufunc = _UNARY_OPS.get(uop_type)
+            if ufunc is None:
+                raise TypeError(f"unsupported unary operator: {uop_type.__name__}")
+            return ufunc(_eval(node.operand))
         if isinstance(node, ast.Name):
             try:
                 return float(_ALLOWED_NAMES[node.id])
