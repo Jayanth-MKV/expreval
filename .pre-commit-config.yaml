@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.12.11  # Sync with pyproject dev dependency
+    hooks:
+      # Run the linter with auto-fix
+      - id: ruff-check
+        args: [--fix]
+      # Run the formatter
+      - id: ruff-format
